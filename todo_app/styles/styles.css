@@ -1,0 +1,186 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  color: #333;
+  font-family: Lato, sans-serif;
+}
+
+li {
+  clear: both;
+  list-style: none;
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+input, button {
+  outline: none;
+}
+
+button {
+  background: none;
+  border: 0;
+  color: #888;
+  font-size: 15px;
+  font-family: Lato, sans-serif;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #333;
+}
+
+label {
+  display: block;
+  margin: 0 0 20px;
+  padding: 30px 0 10px;
+  color: #333;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-bottom: 2px solid #333;
+}
+
+input[type=text]:focus {
+  color: #333;
+}
+
+button:hover {
+  color: #0FC57C;
+}
+
+input[type=checkbox]:hover {
+  cursor: pointer;
+}
+
+.container {
+  display: block;
+  width: 600px;
+  margin: 100px auto 0;
+}
+
+.new-todo--container {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-todo--input-container {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid black;
+}
+.new-todo--input-container input {
+  width: 100%;
+  border: none;
+  font-size: 18px;
+}
+.new-todo--input-container button {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.new-todo--input-container button span {
+  white-space: nowrap;
+}
+
+.incomplete-todos--container, .completed-todos--container {
+  width: 100%;
+}
+.incomplete-todos--container label, .completed-todos--container label {
+  display: block;
+}
+
+.completed-todos--container input {
+  background: none;
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+.todo .todo--text-container {
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+}
+.todo .todo--text-container input {
+  height: 100%;
+  font-size: 18px;
+}
+
+.todo--edit-input {
+  border: none;
+}
+
+.delete-todo-button {
+  font-size: 24px;
+}
+
+.delete-todo-button:hover {
+  cursor: pointer;
+  color: #CF2323;
+}
+
+.editMode {
+  border-bottom: 1px solid black;
+}
+
+.todo--controls-container {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.login--container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  border-radius: 10px;
+}
+.login--container input {
+  width: 90%;
+  margin: 10px;
+  padding: 10px;
+  outline: none;
+}
+
+.login--buttons-container {
+  display: flex;
+  justify-content: space-around;
+  width: 80%;
+}
+
+.login-loader, .login-error {
+  display: none;
+}
+
+.auth-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-error {
+  color: red;
+}
+
+.active {
+  display: block;
+}
+
+/*# sourceMappingURL=styles.css.map */
