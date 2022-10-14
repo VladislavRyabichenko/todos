@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { uniqId } from '../helpers/uniqueIdGenerator';
+import React, { useState } from 'react';
+import  uniqId  from '../helpers/uniqueIdGenerator';
 
 export const TodoContext = React.createContext();
 
 export default function TodoContextProvider({ id, children }) {
   const [todoList, setTodoList] = useState(JSON.parse(window.localStorage.getItem('todos-'.concat(id))) || []);
-
-  useEffect(() => {
-    saveToLocalStorage(todoList);
-  }, [todoList]);
+  const saveToLocalStorage = (list) => {
+    window.localStorage.setItem('todos-'.concat(id), JSON.stringify(list));
+  };
 
   const addTodo = (todoText) => {
     const todo = {
@@ -16,17 +15,20 @@ export default function TodoContextProvider({ id, children }) {
       text: todoText,
       completed: false,
     };
-    setTodoList([...todoList, todo]);
-  };
-
-  const removeTodo = (id) => {
-    const newList = todoList.filter((todo) => todo.id !== id);
+    const newList = [...todoList, todo]
     setTodoList(newList);
+    saveToLocalStorage(newList);
   };
 
-  const updateTodo = (id, textEdited) => {
+  const removeTodo = (todoId) => {
+    const newList = todoList.filter((todo) => todo.id !== todoId);
+    setTodoList(newList);
+    saveToLocalStorage(newList);
+  };
+
+  const updateTodo = (todoId, textEdited) => {
     const newList = todoList.map((todo) => {
-      if (todo.id === id) {
+      if (todo.id === todoId) {
         return {
           ...todo,
           text: textEdited,
@@ -35,11 +37,12 @@ export default function TodoContextProvider({ id, children }) {
       return todo;
     });
     setTodoList(newList);
+    saveToLocalStorage(newList);
   };
 
-  const toggleStatus = (id) => {
+  const toggleStatus = (todoId) => {
     const newList = todoList.map((todo) => {
-      if (todo.id === id) {
+      if (todo.id === todoId) {
         return {
           ...todo,
           completed: !todo.completed,
@@ -48,10 +51,7 @@ export default function TodoContextProvider({ id, children }) {
       return todo;
     });
     setTodoList(newList);
-  };
-
-  const saveToLocalStorage = (list) => {
-    window.localStorage.setItem('todos-'.concat(id), JSON.stringify(list));
+    saveToLocalStorage(newList);
   };
 
   return (

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { TodoContext } from '../Context/TodoContext.jsx';
-import ButtonSubmit from './Button.jsx';
+import { TodoContext } from '../Context/TodoContext';
+import ButtonSubmit from './Button';
 
 export default function InputForm() {
   const { addTodo } = useContext(TodoContext);

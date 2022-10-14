@@ -16,7 +16,8 @@ const loginRequest = (login, password) => {
     const foundUser = DATA_BASE.find((user) => user.login === login && user.password === password);
 
     if (foundUser) resolve({ status: 200, id: foundUser.id });
-    reject({ status: 404 });
+    reject(new Error("Not found"))
+    // reject({ status: 404 });
   });
 };
 

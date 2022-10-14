@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import ButtonSubmit from '../Button.jsx';
-import { LoginContext } from '../../Context/loginContext.jsx';
+import ButtonSubmit from '../Button';
+import { LoginContext } from '../../Context/loginContext';
 
 export default function SignInForm() {
   const { signInRequest } = useContext(LoginContext);
@@ -13,8 +13,8 @@ export default function SignInForm() {
 
   const handleError = (active, message) => {
     setError({
-      active: active,
-      message: message,
+      active,
+      message,
     });
   };
 
@@ -37,14 +37,14 @@ export default function SignInForm() {
     await signInRequest(loginValue, passwordValue).catch(() => handleError(true, 'Invalid data'));
   };
 
+
   return (
-    <div className="signIn-form--container">
+    <div className="sign-in-form--container">
       {error.active && <div className="login-error">{error.message}</div>}
 
-      <form className="signIn-form" onSubmit={handleSubmit}>
+      <form className="sign-in-form" onSubmit={handleSubmit}>
         <input type="text" value={loginValue} onChange={handleLoginInput} />
         <input type="password" value={passwordValue} onChange={handlePasswordInput} />
-
         <ButtonSubmit text={'Sign In'} />
       </form>
     </div>

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import { TodoContext } from '../Context/TodoContext.jsx';
-import Todo from './Todo.jsx';
+import { TodoContext } from '../Context/TodoContext';
+import Todo from './Todo';
 
 export default function List() {
   const { todoList } = useContext(TodoContext);
@@ -8,9 +8,9 @@ export default function List() {
 
   return (
     <div className="todo-list--container">
-      {todoList.map((todo) => {
-        return <Todo key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} />;
-      })}
+      {todoList.map((todo) =>
+        <Todo key={todo.id} id={todo.id} text={todo.text} completed={todo.completed} />
+      )}
     </div>
   );
 }

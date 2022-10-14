@@ -1,14 +1,19 @@
 import React, { useContext } from 'react';
-import { TodoContext } from '../Context/TodoContext.jsx';
 import classNames from 'classnames';
+
+import { TodoContext } from '../Context/TodoContext';
 
 export default function Todo({ id, text, completed }) {
   const { updateTodo, toggleStatus, removeTodo } = useContext(TodoContext);
 
-  const todoStatusClasses = classNames('todo--container', { ['completed']: completed });
+  const todoStatusClasses = classNames('todo--container', { 'completed': completed });
 
   const handleInputBlur = (e) => {
-    updateTodo(id, e.target.value);
+    const inputTrim = e.target.value.trim()
+    if (inputTrim.length && inputTrim !== text) {
+      updateTodo(id, inputTrim);
+    }
+
   };
   const handleCheckbox = () => {
     toggleStatus(id);
@@ -32,7 +37,7 @@ export default function Todo({ id, text, completed }) {
         <div>
           <input checked={completed} type="checkbox" onChange={handleCheckbox} />
         </div>
-        <div className="delete-todo-button" onClick={handleRemove}>
+        <div className="delete-todo-button" onClick={handleRemove} aria-hidden="true">
           X
         </div>
       </div>

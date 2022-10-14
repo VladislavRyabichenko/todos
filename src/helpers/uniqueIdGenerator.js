@@ -1,5 +1,5 @@
-export const uniqId = () => {
-  let a = new Uint32Array(3);
+const uniqId = () => {
+  const a = new Uint32Array(3);
   window.crypto.getRandomValues(a);
   return (
     performance.now().toString(36) +
@@ -8,3 +8,5 @@ export const uniqId = () => {
       .join('')
   ).replace(/\./g, '');
 };
+
+export default uniqId;

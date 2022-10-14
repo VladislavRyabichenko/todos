@@ -23,7 +23,7 @@ export default function LoginContextProvider({ children }) {
 
   return (
     <LoginContext.Provider
-      value={{ isLogined: isLogined, currentUser: currentUser, signInRequest: signInRequest.bind(this) }}
+      value={{ isLogined: isLogined, currentUser: currentUser, signInRequest: signInRequest }}
     >
       {children}
     </LoginContext.Provider>
